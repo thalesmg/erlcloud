@@ -1069,7 +1069,7 @@ make_upload_url(Expire_time, MimeType, BucketName, Key, Config) ->
 -spec make_download_url(integer(), string(), string(), string(), aws_config()) -> iolist().
 
 make_download_url(Expire_time, MimeType, BucketName, Key, Config) ->
-    {Sig, Expires} = sign_method_mime_url("GET", MimeType, Expire_time, BucketName, erlcloud_http:url_encode_loose(Key), Config),
+    {Sig, Expires} = sign_method_mime_url("GET", "", Expire_time, BucketName, erlcloud_http:url_encode_loose(Key), Config),
     make_url(Expires, Sig, BucketName, Key, Config).
 
 -spec start_multipart(string(), string()) -> {ok, proplist()} | {error, any()}.
